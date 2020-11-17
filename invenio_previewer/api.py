@@ -30,7 +30,7 @@ class PreviewFile(object):
     @property
     def size(self):
         """Get file size."""
-        return self.file['size']
+        return self.file.file.size
 
     @property
     def filename(self):

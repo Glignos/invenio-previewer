@@ -12,7 +12,7 @@
 {%- extends config.PREVIEWER_ABSTRACT_TEMPLATE %}
 
 {% block panel %}
-  <div id="d3_csv_previewer" data-csv-source="{{ file.uri }}"
+  <div id="d3_csv_previewer" data-csv-source="/api/files/f3b04c5f-73e5-49eb-b55c-76c2a95545eb/resource_types.csv
        data-csv-delimiter="{{ delimiter }}" data-csv-encoding="{{ encoding }}"></div>
   <a data-csv-target="d3_csv_previewer" href="">{{ _('Show more') }}</a>
 {% endblock %}

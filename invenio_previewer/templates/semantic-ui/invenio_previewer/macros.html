@@ -8,7 +8,8 @@
 #}
 
 {%- macro preview_file(preview_endpoint, pid, filename, id='preview-iframe', width='100%', height='400' ) %}
-  <iframe
+  {{filename}}
+<iframe
    class="preview-iframe"
    id="{{id}}"
    width="{{width}}"
@@ -20,8 +21,8 @@
   <table class="ui striped table">
     <thead>
       <tr>
-        <th>{{_('Name')}}</th>
-        <th>{{_('Size')}}</th>
+        <th><strong>{{_('Name')}}</strong></th>
+        <th><strong>{{_('Size')}}</strong></th>
         <th></th>
       </tr>
     </thead>

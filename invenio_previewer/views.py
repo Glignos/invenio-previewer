@@ -11,6 +11,7 @@
 from __future__ import absolute_import, print_function
 
 from flask import Blueprint, abort, current_app, request
+from invenio_files_rest.models import ObjectVersion
 
 from .api import PreviewFile
 from .extensions import default
@@ -42,15 +43,16 @@ def preview(pid, record, template=None, **kwargs):
         )
     """
     # Get file from record
-    fileobj = current_previewer.record_file_factory(
-        pid, record, request.view_args.get(
-            'filename', request.args.get('filename', type=str))
-    )
-    if not fileobj:
-        abort(404)
-
+    # fileobj = current_previewer.record_file_factory(
+    #     pid, record, request.view_args.get(
+    #         'filename', request.args.get('filename', type=str))
+    # )
+    # if not fileobj:
+    #     abort(404)
+    fileobj = ObjectVersion.get('f3b04c5f-73e5-49eb-b55c-76c2a95545eb',
+     request.view_args.get('filename'))
     # Try to see if specific previewer is set
-    file_previewer = fileobj.get('previewer')
+    file_previewer = None
 
     # Find a suitable previewer
     fileobj = PreviewFile(pid, record, fileobj)
